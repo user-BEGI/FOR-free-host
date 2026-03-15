@@ -1,6 +1,6 @@
 from itertools import product
 
-from django.shortcuts import render,redirect
+
 from blog.forms import ContactForm
 from blog.models import Carusel, Product
 from django.views.generic import DetailView
@@ -49,3 +49,26 @@ def detail(request):
 class ProductDetail(DetailView):
     model=Product
     template_name='detail.html'
+
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout
+def login_view(request):
+    if request.method=='POST':
+        form=AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user=form.get_user()
+            login(request,user)
+            return redirect('index')
+    else:
+        form=AuthenticationForm()
+
+
+    return render(request,'login.html',{"form":form})
+
+
+def logout_view(request):
+    if request.method=='POST':
+        logout(request)
+        return redirect('login')
+    return render(request,'logout.html')

@@ -43,6 +43,11 @@
                         <a href="team.html" class="nav-item nav-link">Chef</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
                         <a href="booking.html" class="nav-item nav-link">Booking</a>
+                        {% if not  user.is_authenticated  %}
+                        <a href="{% url "login" %}" class="nav-item nav-link">LOGIN</a>
+                        {% else %}
+                        <a href="{% url "logout" %}" class="nav-item nav-link">LOGOUT</a>
+                        {% endif %}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu">
