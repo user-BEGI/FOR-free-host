@@ -74,8 +74,7 @@ WSGI_APPLICATION = 'burger.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-import dj_database_url # Buni faylning eng yuqorisiga import qiling
-
+import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
